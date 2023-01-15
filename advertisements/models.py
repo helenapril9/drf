@@ -1,17 +1,16 @@
 from django.conf import settings
 from django.db import models
+from django_filters import DateFromToRangeFilter
+from django_filters.filterset import BaseFilterSet
 
 
 class AdvertisementStatusChoices(models.TextChoices):
     """Статусы объявления."""
-
     OPEN = "OPEN", "Открыто"
     CLOSED = "CLOSED", "Закрыто"
 
-
 class Advertisement(models.Model):
     """Объявление."""
-
     title = models.TextField()
     description = models.TextField(default='')
     status = models.TextField(
@@ -28,3 +27,10 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+class F(BaseFilterSet):
+    created_at = DateFromToRangeFilter()
+
+    class Meta:
+        model = Advertisement
+        fields = ['created_at']

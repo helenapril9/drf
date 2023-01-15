@@ -3,36 +3,36 @@
 @baseUrl = http://localhost:8000/api
 
 # получение объявлений
-GET  {{baseUrl}}/advertisements/18
+GET {{baseUrl}}/advertisements/
 Content-Type: application/json
 ###
 
 # создание объявления
-POST  {{baseUrl}}/advertisements/
+POST {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token 2d3e96556452992619e0398525a806f19cd7a766
+Authorization: Token a68416c3c1bbb0ab03b8c6598b6c640b9032c23c
 
 {
-  "title": "Окно 45 IKEA",
+  "title": "Окно 400 IKEA",
   "description": "Срочно"
 }
 
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/31/
+PATCH  {{baseUrl}}/advertisements/1/
 Content-Type: application/json
-Authorization: Token 2d3e96556452992619e0398525a806f19cd7a766
+Authorization: Token a68416c3c1bbb0ab03b8c6598b6c640b9032c23c
 
 {
-  "title": "Окно 45 IKEA",
+  "title": "Окно 400 IKEA",
   "status": "CLOSED"
 }
 
 ###
 
 # фильтрация по статусу
-GET {{baseUrl}}/advertisements/?status=OPEN
+GET {{baseUrl}}/advertisements/?status=CLOSED
 Content-Type: application/json
 
 ###
